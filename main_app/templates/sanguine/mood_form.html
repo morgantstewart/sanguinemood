@@ -1,0 +1,165 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<div class="page-header">
+  {% if mood %}
+    <h1>Edit {{ mood.name }}</h1>
+  {% else %}
+    <h1>Add a Mood</h1>
+  {% endif %}
+</div>
+
+<form action="" method="post" class="form-container">
+  {% csrf_token %}
+  
+  <div class="mood-selection">
+    <h3>How are you feeling?</h3>
+    <div class="mood-grid">
+      <div class="mood-option mood-depressed" data-mood="depressed">
+        <span>Depressed</span>
+        <input type="radio" name="mood_type" value="depressed" id="mood_depressed" style="display: none;" {% if form.mood_type.value == 'depressed' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-sad" data-mood="sad">
+        <span>Sad</span>
+        <input type="radio" name="mood_type" value="sad" id="mood_sad" style="display: none;" {% if form.mood_type.value == 'sad' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-okay" data-mood="okay">
+        <span>Okay</span>
+        <input type="radio" name="mood_type" value="okay" id="mood_okay" style="display: none;" {% if form.mood_type.value == 'okay' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-good" data-mood="good">
+        <span>Good</span>
+        <input type="radio" name="mood_type" value="good" id="mood_good" style="display: none;" {% if form.mood_type.value == 'good' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-happy" data-mood="happy">
+        <span>Happy</span>
+        <input type="radio" name="mood_type" value="happy" id="mood_happy" style="display: none;" {% if form.mood_type.value == 'happy' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-ecstatic" data-mood="ecstatic">
+        <span>Ecstatic</span>
+        <input type="radio" name="mood_type" value="ecstatic" id="mood_ecstatic" style="display: none;" {% if form.mood_type.value == 'ecstatic' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-irritated" data-mood="irritated">
+        <span>Irritated</span>
+        <input type="radio" name="mood_type" value="irritated" id="mood_irritated" style="display: none;" {% if form.mood_type.value == 'irritated' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-mad" data-mood="mad">
+        <span>Mad</span>
+        <input type="radio" name="mood_type" value="mad" id="mood_mad" style="display: none;" {% if form.mood_type.value == 'mad' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-anxious" data-mood="anxious">
+        <span>Anxious</span>
+        <input type="radio" name="mood_type" value="anxious" id="mood_anxious" style="display: none;" {% if form.mood_type.value == 'anxious' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-excited" data-mood="excited">
+        <span>Excited</span>
+        <input type="radio" name="mood_type" value="excited" id="mood_excited" style="display: none;" {% if form.mood_type.value == 'excited' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-tired" data-mood="tired">
+        <span>Tired</span>
+        <input type="radio" name="mood_type" value="tired" id="mood_tired" style="display: none;" {% if form.mood_type.value == 'tired' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-stressed" data-mood="stressed">
+        <span>Stressed</span>
+        <input type="radio" name="mood_type" value="stressed" id="mood_stressed" style="display: none;" {% if form.mood_type.value == 'stressed' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-calm" data-mood="calm">
+        <span>Calm</span>
+        <input type="radio" name="mood_type" value="calm" id="mood_calm" style="display: none;" {% if form.mood_type.value == 'calm' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-confused" data-mood="confused">
+        <span>Confused</span>
+        <input type="radio" name="mood_type" value="confused" id="mood_confused" style="display: none;" {% if form.mood_type.value == 'confused' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-grateful" data-mood="grateful">
+        <span>Grateful</span>
+        <input type="radio" name="mood_type" value="grateful" id="mood_grateful" style="display: none;" {% if form.mood_type.value == 'grateful' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-lonely" data-mood="lonely">
+        <span>Lonely</span>
+        <input type="radio" name="mood_type" value="lonely" id="mood_lonely" style="display: none;" {% if form.mood_type.value == 'lonely' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-content" data-mood="content">
+        <span>Content</span>
+        <input type="radio" name="mood_type" value="content" id="mood_content" style="display: none;" {% if form.mood_type.value == 'content' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-overwhelmed" data-mood="overwhelmed">
+        <span>Overwhelmed</span>
+        <input type="radio" name="mood_type" value="overwhelmed" id="mood_overwhelmed" style="display: none;" {% if form.mood_type.value == 'overwhelmed' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-peaceful" data-mood="peaceful">
+        <span>Peaceful</span>
+        <input type="radio" name="mood_type" value="peaceful" id="mood_peaceful" style="display: none;" {% if form.mood_type.value == 'peaceful' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-energetic" data-mood="energetic">
+        <span>Energetic</span>
+        <input type="radio" name="mood_type" value="energetic" id="mood_energetic" style="display: none;" {% if form.mood_type.value == 'energetic' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-bored" data-mood="bored">
+        <span>Bored</span>
+        <input type="radio" name="mood_type" value="bored" id="mood_bored" style="display: none;" {% if form.mood_type.value == 'bored' %}checked{% endif %}>
+      </div>
+      <div class="mood-option mood-proud" data-mood="proud">
+        <span>Proud</span>
+        <input type="radio" name="mood_type" value="proud" id="mood_proud" style="display: none;" {% if form.mood_type.value == 'proud' %}checked{% endif %}>
+      </div>
+    </div>
+  </div>
+
+  <table>
+    <tr>
+      <th>{{ form.description.label_tag }}</th>
+      <td>{{ form.description }}</td>
+    </tr>
+    <tr>
+      <th>{{ form.date.label_tag }}</th>
+      <td>
+        <input type="date" name="{{ form.date.name }}" id="{{ form.date.id_for_label }}" 
+               value="{% if form.date.value %}{{ form.date.value|date:'Y-m-d' }}{% else %}{{ form.date.field.initial|default:'' }}{% endif %}"
+               class="date-picker">
+      </td>
+    </tr>
+  </table>
+  <button type="submit" class="btn submit">Submit!</button>
+</form>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const moodOptions = document.querySelectorAll('.mood-option');
+    
+    moodOptions.forEach(option => {
+        option.addEventListener('click', function() {
+            // Remove selected class from all options
+            moodOptions.forEach(opt => opt.classList.remove('selected'));
+            
+            // Add selected class to clicked option
+            this.classList.add('selected');
+            
+            // Check the corresponding radio button
+            const radioButton = this.querySelector('input[type="radio"]');
+            radioButton.checked = true;
+        });
+    });
+    
+    // Set selection based on form data or default to happy
+    const checkedRadio = document.querySelector('input[name="mood_type"]:checked');
+    let selectedMood = 'happy'; // default
+    
+    if (checkedRadio) {
+        selectedMood = checkedRadio.value;
+    }
+    
+    const defaultOption = document.querySelector(`[data-mood="${selectedMood}"]`);
+    if (defaultOption) {
+        defaultOption.classList.add('selected');
+        const defaultRadio = defaultOption.querySelector('input[type="radio"]');
+        defaultRadio.checked = true;
+    }
+});
+</script>
+
+{% endblock %}

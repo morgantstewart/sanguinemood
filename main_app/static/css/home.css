@@ -1,0 +1,136 @@
+main {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    height: 100%;
+    margin-top: 80px; /* Add space for navbar to prevent overlap */
+  }
+  
+  main > section {
+    width: 100%;
+    padding: 10px 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+  }
+  
+  .header-logo-container {
+    display: none;
+  }
+  
+  .logo-container {
+    max-width: 375px;
+  }
+  
+  .mood-container {
+    width: 80%;
+  }
+
+  .homepage-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 120px); /* Account for navbar */
+    margin-top: 80px;
+    padding: 20px;
+  }
+
+  .hero-content {
+    text-align: center;
+    max-width: 800px;
+    width: 100%;
+  }
+
+  .welcome-text {
+    margin-bottom: 40px;
+  }
+
+  .welcome-text h1 {
+    font-size: clamp(3.5rem, 8vw, 8rem);
+    margin-bottom: 30px;
+    color: #B0CFA5;
+    font-weight: 700;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+  }
+
+  .welcome-text p {
+    font-size: clamp(1.5rem, 2.5vw, 2.5rem);
+    color: var(--secondary);
+    font-weight: 400;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  .logo-display {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .logo-display img {
+    max-width: 100%;
+    height: auto;
+    max-height: 400px;
+  }
+  
+  .login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 80%;
+  }
+  
+  .login h1 {
+    font-size: clamp(3.2rem, 3vw, 4.8rem);
+    margin: 10px 0;
+  }
+  
+  .login > p {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 14px 0 0px;
+  }
+  
+  .login label {
+    font-size: var(--font-reg);
+    margin-bottom: 6px;
+  }
+  
+  .login input {
+    font-size: var(--font-l);
+    padding: 2px 4px;
+  }
+  
+  .login .btn {
+    align-self: flex-end;
+    margin-right: 0;
+    margin-top: 16px;
+  }
+  
+  @media only screen and (min-width: 768px) {
+    main {
+      justify-content: space-around;
+    }
+  
+    main > section {
+      width: 40%;
+    }
+  
+    .login {
+      border: 1px solid rgb(77, 77, 77);
+      padding: 20px;
+      border-radius: var(--card-border-radius);
+      box-shadow: var(--card-box-shadow);
+      width: 150%;
+    }
+  
+    .logo-container {
+      max-width: 520px;
+    }
+  }
+  

@@ -1,0 +1,415 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load calendar_extras %}
+
+{% block content %}
+<div class="calendar-container">
+    <div class="calendar-header">
+        <h1>Mood Calendar</h1>
+        <div class="calendar-navigation">
+            <a href="{% url 'mood-calendar' %}?year={{ prev_year }}&month={{ prev_month }}" class="nav-btn">← Previous</a>
+            <span class="month-year">{{ month_name }} {{ year }}</span>
+            <a href="{% url 'mood-calendar' %}?year={{ next_year }}&month={{ next_month }}" class="nav-btn">Next →</a>
+        </div>
+    </div>
+    
+
+    <div class="calendar-grid">
+        <div class="calendar-weekdays">
+            <div class="weekday">Mon</div>
+            <div class="weekday">Tue</div>
+            <div class="weekday">Wed</div>
+            <div class="weekday">Thu</div>
+            <div class="weekday">Fri</div>
+            <div class="weekday">Sat</div>
+            <div class="weekday">Sun</div>
+        </div>
+
+        {% for week in calendar %}
+            <div class="calendar-week">
+                {% for day in week %}
+                    <div class="calendar-day {% if day == 0 %}empty-day{% endif %}">
+                        {% if day != 0 %}
+                            <div class="day-number">{{ day }}</div>
+                            {% format_date_string year month day as day_str %}
+                            {% for mood in moods_by_date|lookup:day_str %}
+                                <div class="mood-indicator mood-{{ mood.mood_type }}" title="{{ mood.name }}: {{ mood.description }}">
+                                    <a href="{% url 'mood-detail' mood.id %}">{{ mood.get_mood_type_display }}</a>
+                                </div>
+                            {% endfor %}
+                        {% endif %}
+                    </div>
+                {% endfor %}
+            </div>
+        {% endfor %}
+    </div>
+
+    <div class="mood-legend">
+        <h3>Mood Legend</h3>
+        <div class="legend-items">
+            <div class="legend-item"><span class="mood-color mood-depressed"></span> Depressed</div>
+            <div class="legend-item"><span class="mood-color mood-sad"></span> Sad</div>
+            <div class="legend-item"><span class="mood-color mood-okay"></span> Okay</div>
+            <div class="legend-item"><span class="mood-color mood-good"></span> Good</div>
+            <div class="legend-item"><span class="mood-color mood-happy"></span> Happy</div>
+            <div class="legend-item"><span class="mood-color mood-ecstatic"></span> Ecstatic</div>
+            <div class="legend-item"><span class="mood-color mood-irritated"></span> Irritated</div>
+            <div class="legend-item"><span class="mood-color mood-mad"></span> Mad</div>
+            <div class="legend-item"><span class="mood-color mood-anxious"></span> Anxious</div>
+            <div class="legend-item"><span class="mood-color mood-excited"></span> Excited</div>
+            <div class="legend-item"><span class="mood-color mood-tired"></span> Tired</div>
+            <div class="legend-item"><span class="mood-color mood-stressed"></span> Stressed</div>
+            <div class="legend-item"><span class="mood-color mood-calm"></span> Calm</div>
+            <div class="legend-item"><span class="mood-color mood-confused"></span> Confused</div>
+            <div class="legend-item"><span class="mood-color mood-grateful"></span> Grateful</div>
+            <div class="legend-item"><span class="mood-color mood-lonely"></span> Lonely</div>
+            <div class="legend-item"><span class="mood-color mood-content"></span> Content</div>
+            <div class="legend-item"><span class="mood-color mood-overwhelmed"></span> Overwhelmed</div>
+            <div class="legend-item"><span class="mood-color mood-peaceful"></span> Peaceful</div>
+            <div class="legend-item"><span class="mood-color mood-energetic"></span> Energetic</div>
+            <div class="legend-item"><span class="mood-color mood-bored"></span> Bored</div>
+            <div class="legend-item"><span class="mood-color mood-proud"></span> Proud</div>
+        </div>
+    </div>
+
+    <div class="calendar-actions">
+        <a href="{% url 'mood-create' %}">Log New Mood</a>
+        <a href="{% url 'moods-index' %}">All Moods</a>
+    </div>
+</div>
+
+<style>
+.calendar-container {
+    max-width: 1200px;
+    margin: 100px auto 20px auto; /* Add space for sticky navbar */
+    padding: 20px;
+    background: var(--card-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    padding-bottom: 20px;
+    border-bottom: 2px solid var(--border-color);
+}
+
+.calendar-header h1 {
+    color: var(--text-color);
+    margin: 0;
+}
+
+.calendar-navigation {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.nav-btn {
+    background: #007bff;
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.nav-btn:hover {
+    background: #0056b3;
+}
+
+.month-year {
+    font-size: 1.2em;
+    font-weight: bold;
+    color: var(--text-color);
+}
+
+.calendar-grid {
+    margin-bottom: 30px;
+}
+
+.calendar-weekdays {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    margin-bottom: 5px;
+}
+
+.weekday {
+    background: var(--card-bg);
+    padding: 10px;
+    text-align: center;
+    font-weight: bold;
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+}
+
+.calendar-week {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 1px;
+    margin-bottom: 1px;
+}
+
+.calendar-day {
+    min-height: 100px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 1px solid var(--border-color);
+    padding: 8px;
+    position: relative;
+}
+
+.empty-day {
+    background: var(--card-bg);
+}
+
+.day-number {
+    font-weight: bold;
+    color: var(--text-color);
+    margin-bottom: 5px;
+}
+
+.moods-for-day {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.mood-indicator {
+    border-radius: 6px;
+    padding: 4px 8px;
+    font-size: 0.75em;
+    font-weight: 600;
+    margin: 1px 0;
+    text-align: center;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.2);
+    transition: transform 0.2s ease;
+    min-height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.mood-indicator:hover {
+    transform: scale(1.05);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}
+
+.mood-indicator a {
+    text-decoration: none;
+    display: block;
+    width: 100%;
+}
+
+.mood-indicator.mood-depressed {
+    background: #5B7C99 !important;
+    border: 2px solid #5B7C99 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-sad {
+    background: #4169E1 !important;
+    border: 2px solid #4169E1 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-okay {
+    background: #8FBC8F !important;
+    border: 2px solid #8FBC8F !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-good {
+    background: #20B2AA !important;
+    border: 2px solid #20B2AA !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-happy {
+    background: #CCFFCC !important;
+    border: 2px solid #CCFFCC !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-ecstatic {
+    background: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-irritated {
+    background: #FFB6C1 !important;
+    border: 2px solid #FFB6C1 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-mad {
+    background: #FF6347 !important;
+    border: 2px solid #FF6347 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-anxious {
+    background: #FFD700 !important;
+    border: 2px solid #FFD700 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-excited {
+    background: #FF69B4 !important;
+    border: 2px solid #FF69B4 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-tired {
+    background: #708090 !important;
+    border: 2px solid #708090 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-stressed {
+    background: #DC143C !important;
+    border: 2px solid #DC143C !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-calm {
+    background: #87CEEB !important;
+    border: 2px solid #87CEEB !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-confused {
+    background: #DDA0DD !important;
+    border: 2px solid #DDA0DD !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-grateful {
+    background: #FFA07A !important;
+    border: 2px solid #FFA07A !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-lonely {
+    background: #483D8B !important;
+    border: 2px solid #483D8B !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-content {
+    background: #98FB98 !important;
+    border: 2px solid #98FB98 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-overwhelmed {
+    background: #8B0000 !important;
+    border: 2px solid #8B0000 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-peaceful {
+    background: #E0E0E0 !important;
+    border: 2px solid #E0E0E0 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-energetic {
+    background: #FF4500 !important;
+    border: 2px solid #FF4500 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-bored {
+    background: #696969 !important;
+    border: 2px solid #696969 !important;
+    color: black !important;
+}
+
+.mood-indicator.mood-proud {
+    background: #DAA520 !important;
+    border: 2px solid #DAA520 !important;
+    color: black !important;
+}
+
+.mood-indicator a {
+    color: inherit !important;
+}
+
+/* Mood Legend Styles */
+.mood-legend {
+    margin: 20px 0;
+    padding: 20px;
+    background: var(--input-bg);
+    color: var(--text-color);
+    border-radius: 10px;
+    border: 1px solid var(--border-color);
+}
+
+.mood-legend h3 {
+    margin: 0 0 15px 0;
+    color: var(--text-color);
+    text-align: center;
+}
+
+.legend-items {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 10px;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: #555;
+}
+
+.mood-color {
+    width: 20px;
+    height: 20px;
+    border-radius: 3px;
+    margin-right: 8px;
+    border: 1px solid #ccc;
+}
+
+/* Legend color matching - PNG icon colors */
+.mood-color.mood-depressed { background: #5B7C99; }
+.mood-color.mood-sad { background: #4169E1; }
+.mood-color.mood-okay { background: #8FBC8F; }
+.mood-color.mood-good { background: #20B2AA; }
+.mood-color.mood-happy { background: #CCFFCC; }
+.mood-color.mood-ecstatic { background: #FFD700; }
+.mood-color.mood-irritated { background: #FFB6C1; }
+.mood-color.mood-mad { background: #FF6347; }
+.mood-color.mood-anxious { background: #FFD700; }
+.mood-color.mood-excited { background: #FF69B4; }
+.mood-color.mood-tired { background: #708090; }
+.mood-color.mood-stressed { background: #DC143C; }
+.mood-color.mood-calm { background: #87CEEB; }
+.mood-color.mood-confused { background: #DDA0DD; }
+.mood-color.mood-grateful { background: #FFA07A; }
+.mood-color.mood-lonely { background: #483D8B; }
+.mood-color.mood-content { background: #98FB98; }
+.mood-color.mood-overwhelmed { background: #8B0000; }
+.mood-color.mood-peaceful { background: #E0E0E0; }
+.mood-color.mood-energetic { background: #FF4500; }
+.mood-color.mood-bored { background: #696969; }
+.mood-color.mood-proud { background: #DAA520; }
+
+.calendar-actions {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    padding-top: 20px;
+    border-top: 2px solid #f0f0f0;
+}
+
+</style>
+{% endblock %}

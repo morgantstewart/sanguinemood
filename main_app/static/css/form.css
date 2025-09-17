@@ -1,0 +1,347 @@
+  .page-header {
+    margin-top: 80px;
+  }
+
+  .form-container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+  
+  table {
+    padding: 0 40px;
+    width: 100%;
+    border-spacing: 0 20px;
+    background: var(--card-bg);
+    border-radius: var(--card-border-radius);
+  }
+  
+  th {
+    text-align: left;
+    padding: 6px 20px 0 0;
+    font-weight: normal;
+    vertical-align: top;
+    font-size: var(--font-reg);
+  }
+  
+  td {
+    max-width: 60%;
+  }
+  
+  td > * {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: var(--font-l);
+    background: var(--input-bg);
+    color: var(--text-color);
+    border: 2px solid var(--border-color);
+    border-radius: var(--card-border-radius);
+  }
+  
+  td > *:focus {
+    outline: none;
+    border-color: rgb(70, 130, 248);
+    box-shadow: 0 0 0 3px rgba(70, 130, 248, 0.1);
+  }
+  
+  td > textarea {
+    height: calc(4 * var(--font-l) + 8px);
+    font-family: inherit;
+    resize: vertical;
+  }
+  
+  .btn {
+    align-self: flex-end;
+    margin-right: 40px;
+  }
+
+  .date-picker {
+    width: 100%;
+    padding: 8px 12px;
+    font-size: var(--font-l);
+    border: 2px solid var(--border-color);
+    border-radius: var(--card-border-radius);
+    background: var(--input-bg);
+    color: var(--text-color);
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+  }
+
+  .date-picker:focus {
+    outline: none;
+    border-color: rgb(70, 130, 248);
+    box-shadow: 0 0 0 3px rgba(70, 130, 248, 0.1);
+  }
+
+  .date-picker:hover {
+    border-color: rgb(70, 130, 248);
+  }
+
+  .mood-selection {
+    margin: 30px 0;
+    padding: 20px;
+    background: var(--input-bg);
+    border-radius: 10px;
+    border: 2px solid var(--border-color);
+  }
+
+  .mood-selection h3 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--text-color);
+    font-size: 1.2em;
+  }
+
+  .mood-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .mood-option {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: 2px solid transparent;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-align: center;
+    font-weight: 600;
+    font-size: 1em;
+    min-height: 60px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+
+  .mood-option:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  }
+
+  .mood-option.selected {
+    border: 3px solid #333;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    transform: translateY(-2px);
+  }
+
+  .mood-option.mood-depressed {
+    background: #5B7C99;
+    color: black;
+  }
+
+  .mood-option.mood-sad {
+    background: #4169E1;
+    color: black;
+  }
+
+  .mood-option.mood-okay {
+    background: #8FBC8F;
+    color: black;
+  }
+
+  .mood-option.mood-good {
+    background: #20B2AA;
+    color: black;
+  }
+
+  .mood-option.mood-happy {
+    background: #CCFFCC;
+    color: black;
+  }
+
+  .mood-option.mood-ecstatic {
+    background: #FFD700;
+    color: black;
+  }
+
+  .mood-option.mood-irritated {
+    background: #FFB6C1;
+    color: black;
+  }
+
+  .mood-option.mood-mad {
+    background: #FF6347;
+    color: black;
+  }
+
+  .mood-option.mood-anxious {
+    background: #FFD700;
+    color: black;
+  }
+
+  .mood-option.mood-excited {
+    background: #FF69B4;
+    color: black;
+  }
+
+  .mood-option.mood-tired {
+    background: #708090;
+    color: black;
+  }
+
+  .mood-option.mood-stressed {
+    background: #DC143C;
+    color: black;
+  }
+
+  .mood-option.mood-calm {
+    background: #87CEEB;
+    color: black;
+  }
+
+  .mood-option.mood-confused {
+    background: #DDA0DD;
+    color: black;
+  }
+
+  .mood-option.mood-grateful {
+    background: #FFA07A;
+    color: black;
+  }
+
+  .mood-option.mood-lonely {
+    background: #483D8B;
+    color: black;
+  }
+
+  .mood-option.mood-content {
+    background: #98FB98;
+    color: black;
+  }
+
+  .mood-option.mood-overwhelmed {
+    background: #8B0000;
+    color: black;
+  }
+
+  .mood-option.mood-peaceful {
+    background: #E0E0E0;
+    color: black;
+  }
+
+  .mood-option.mood-energetic {
+    background: #FF4500;
+    color: black;
+  }
+
+  .mood-option.mood-bored {
+    background: #696969;
+    color: black;
+  }
+
+  .mood-option.mood-proud {
+    background: #DAA520;
+    color: black;
+  }
+
+  .mood-option span {
+    font-size: 1em;
+    font-weight: 600;
+  }
+
+  .mood-text-display {
+    margin-right: 15px;
+    min-width: 120px; /* Adjusted for bigger emoji */
+  }
+
+  .mood-text-content {
+    padding: 50px; /* More padding for bigger emoji */
+    background: linear-gradient(135deg, var(--input-bg) 0%, var(--card-bg) 100%);
+    border-radius: 12px;
+    border: 2px solid var(--border-color);
+    text-align: center;
+    box-shadow: var(--card-box-shadow);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    min-height: 80px; /* Ensure consistent height for bigger emoji */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .mood-text-content:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+  }
+
+  .mood-text-content p {
+    margin: 0;
+    font-size: 4em; /* Much bigger emoji */
+    color: var(--text-color);
+    font-weight: 600;
+    line-height: 1.4;
+  }
+
+  .helptext, ul.helptext {
+    font-size: 0.9em;
+    color: var(--secondary);
+    margin: 8px 0 15px 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.6;
+  }
+
+  .helptext li, ul.helptext li {
+    margin-bottom: 6px;
+    padding: 2px 0;
+    line-height: 1.5;
+  }
+
+  form table td {
+    padding: 8px 0;
+    vertical-align: top;
+  }
+
+  form table tr {
+    margin-bottom: 15px;
+  }
+
+  form ul {
+    margin: 10px 0;
+    padding-left: 0;
+    line-height: 1.8;
+  }
+
+  form li {
+    margin-bottom: 10px;
+    line-height: 1.7;
+    display: block;
+    padding: 3px 0;
+  }
+
+  form td ul {
+    margin-top: 15px;
+    margin-bottom: 25px;
+  }
+
+  form td ul li {
+    margin-bottom: 18px;
+    padding: 6px 0;
+    line-height: 2.0;
+    font-size: 1.1em;
+    color: var(--secondary);
+    display: block;
+  }
+
+  .login ul.helptext {
+    font-size: var(--font-reg);
+    color: var(--secondary);
+    margin: 8px 0 12px 0;
+    padding: 0;
+    list-style: none;
+    line-height: 1.4;
+  }
+
+  .login ul.helptext li {
+    margin-bottom: 4px;
+    line-height: 1.3;
+    font-size: 0.9em;
+  }
+
+  .page-header + form.login {
+    margin: 20px auto;
+    max-width: 500px;
+  }
+  

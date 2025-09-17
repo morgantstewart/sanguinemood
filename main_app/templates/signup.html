@@ -1,0 +1,20 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/form.css' %}" />
+{% endblock %} 
+{% block content %}
+<div class="page-header">
+  <h1>Start Using Sanguine</h1>
+  <img src="{% static 'images/' %}" alt="" />
+</div>
+{% if error_message %}
+  <p class="red-text">{{ error_message }}</p>
+{% endif %}
+<form action="" method="post" class="login" autocomplete="off">
+  {% csrf_token %}
+  {{ form.as_p }}
+  <button type="submit" class="btn submit">Submit!</button>
+</form>
+
+{% endblock %}

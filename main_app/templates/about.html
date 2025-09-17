@@ -1,0 +1,99 @@
+{% extends 'base.html' %} 
+{% load static %}
+
+{% block head %}
+<style>
+.about-container {
+    max-width: 600px;
+    margin: 100px auto 20px auto;
+    padding: 40px;
+    background: var(--card-bg);
+    border-radius: 12px;
+    box-shadow: var(--card-box-shadow);
+    border: 1px solid var(--border-color);
+}
+
+.about-container h1 {
+    color: var(--text-color);
+    text-align: center;
+    margin-bottom: 20px;
+    font-family: 'Borsok', 'Oswald', 'Bebas Neue', sans-serif;
+}
+
+.about-container hr {
+    border: none;
+    height: 1px;
+    background: var(--border-color);
+    margin: 20px 0;
+}
+
+.about-content {
+    color: var(--text-color);
+    line-height: 1.6;
+    font-size: 1.1em;
+}
+
+.about-content ul {
+    margin: 20px 0;
+    padding-left: 20px;
+}
+
+.about-content li {
+    margin-bottom: 8px;
+}
+
+.about-logo {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.about-logo img {
+    max-width: 200px;
+    height: auto;
+}
+
+.about-footer {
+    text-align: center;
+    margin-top: 30px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border-color);
+    color: var(--secondary);
+    font-style: italic;
+}
+
+.about-footer a {
+    color: var(--link-color);
+    text-decoration: none;
+}
+
+.about-footer a:hover {
+    text-decoration: underline;
+}
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="about-container">
+    <h1>About Sanguine</h1>
+    <hr />
+    <div class="about-content">
+        <p>Sanguine is a mood tracking app that allows you to track your moods and feelings over time.</p>
+        
+        <p><strong>Mood monitoring can:</strong></p>
+        <ul>
+            <li>create space to feel your feelings</li>
+            <li>help you recognize patterns and triggers</li>
+            <li>help you communicate your feelings to others</li>
+            <li>help you get the mental health support you need</li>
+        </ul>
+        
+        <div class="about-logo">
+            <img src="{% static 'css/images/hdlarge.png' %}" alt="Sanguine Logo" />
+        </div>
+    </div>
+    
+    <div class="about-footer">
+        an app by <a href="https://github.com/morgantstewart">Morgan Stewart</a>
+    </div>
+</div>
+{% endblock %}
