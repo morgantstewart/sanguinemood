@@ -1,14 +1,12 @@
 # main_app/views.py
 
 from django.shortcuts import render, redirect
-from django.views.generic import ListView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.http import HttpResponse
 from .models import Mood
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.utils import timezone
-from datetime import datetime, timedelta
+from datetime import datetime
 import calendar
 
 from django.contrib.auth import login
@@ -25,24 +23,7 @@ def about(request):
     return render(request, 'about.html')
 
 
-# views.py
 
-class MoodData:
-    def __init__(self, name, breed, description, age):
-        self.name = name
-        self.breed = breed
-        self.description = description
-        self.age = age
-
-# Create a list of MoodData instances (for fallback data)
-moods_data = [
-    MoodData('Lolo', 'tabby', 'Kinda rude.', 3),
-    MoodData('Sachi', 'tortoiseshell', 'Looks like a turtle.', 0),
-    MoodData('Fancy', 'bombay', 'Happy fluff ball.', 4),
-    MoodData('Bonk', 'selkirk rex', 'Meows loudly.', 6)
-]
-
-# views.py
 @login_required
 def moods_index(request):
     moods = Mood.objects.filter(user=request.user)
