@@ -39,7 +39,7 @@ Sanguine tracks a comprehensive range of emotions including:
 
 ## Getting Started
 
-- GitHub Repo: https://github.com/morgantstewart/sanguine-mood-tracker
+- GitHub Repo: https://github.com/morgantstewart/sanguinemood
 - Project Management Board: https://trello.com/b/Ngl8w7ew/sanguine-mood-tracker-app
 
 
@@ -56,7 +56,7 @@ Sanguine tracks a comprehensive range of emotions including:
 
 ### Backend
 - **Django 4.x** - Python web framework
-- **SQLite** - Database (default, easily configurable for PostgreSQL)
+- **PostgreSQL** - Database
 - **Python 3.8+** - Programming language
 
 ### Frontend
