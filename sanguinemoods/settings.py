@@ -151,7 +151,3 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 LOGIN_URL = 'home'
 LOGIN_REDIRECT_URL = 'moods-index'
 LOGOUT_REDIRECT_URL = 'home'
-
-[packages]
-django = "*"
-psycopg2-binary = "*"
