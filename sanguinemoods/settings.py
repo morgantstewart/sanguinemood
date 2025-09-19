@@ -32,7 +32,9 @@ SECRET_KEY = os.getenv('morganstewart')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 if not 'ON_HEROKU' in os.environ:
-DEBUG = True
+    DEBUG = True
+else:
+    DEBUG = False
 
 ALLOWED_HOSTS = ["*"]
 
