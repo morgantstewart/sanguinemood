@@ -295,12 +295,15 @@ nav li {
     border-bottom: none;
   }
 
-  nav,
-  .header-logo-container {
+  nav {
     margin: 0;
     background: var(--nav-bg-ff);
     border: var(--borders);
     border-radius: 18px;
+  }
+
+  .header-logo-container {
+    margin: 0;
   }
 
   nav {
@@ -320,8 +323,7 @@ nav li {
       backdrop-filter: none;
     }
 
-    nav,
-    .header-logo-container {
+    nav {
       background: rgba(104, 197, 248, 0.6);
       -webkit-backdrop-filter: blur(3px);
       backdrop-filter: blur(3px);
