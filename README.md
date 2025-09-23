@@ -7,6 +7,10 @@ A beautiful, dark-themed mood tracking web application that helps you monitor yo
 
 *Built using modern web technologies by [Morgan Stewart.](https://github.com/morgantstewart)*
 
+- URL: https://sanguine-b7b5c650c237.herokuapp.com/
+
+- GitHub Repo: https://github.com/morgantstewart/sanguinemood
+- Project Management Board: https://trello.com/b/Ngl8w7ew/sanguine-mood-tracker-app
 
 
 ## Description
@@ -34,13 +38,6 @@ Sanguine tracks a comprehensive range of emotions including:
 - Energy levels: Tired, Energetic, Bored
 - Social emotions: Lonely, Proud
 - And many more!
-
-
-
-## Getting Started
-
-- GitHub Repo: https://github.com/morgantstewart/sanguinemood
-- Project Management Board: https://trello.com/b/Ngl8w7ew/sanguine-mood-tracker-app
 
 
 
